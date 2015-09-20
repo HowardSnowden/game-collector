@@ -1,0 +1,13 @@
+-if @user_game.errors.any?
+  ul 
+    - @user_game.errors.full_messages.each do |e|
+        li = e
+-if @game && @game.errors.any?
+  ul
+    -@game.errors.full_messages.each do |e|
+        li = e
+= form_for @user_game, url: {action: "create"}, html: {class: "new_game_form"} do |f|
+  = text_field_tag :title
+  = select_tag 'system', options_from_collection_for_select(@systems, 'id', 'name')
+  = hidden_field_tag 'user_id', current_user.id
+  = f.submit "Create"

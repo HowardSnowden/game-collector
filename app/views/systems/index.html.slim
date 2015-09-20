@@ -1,0 +1,14 @@
+h1 = 'Consoles'
+table.table
+  thead
+    tr
+      th = 'Console'
+      th = 'Games'
+      
+  tbody
+    - @systems.each do |g|
+        tr 
+          td = g.name
+          td
+            = link_to "Games on this console", games_path(:system => g.id)
+  

@@ -1,0 +1,20 @@
+h2 = "#{@user.name}'s games"
+-if current_user == @user
+  .new-game
+  .add 
+    = button_to "Add Game", new_user_game_path, remote: true, class: 'btn btn-primary', method: :get
+-if @user.system_games
+    table.table
+        thead
+            tr
+              th = 'Game Title'
+              th = 'Console'
+        tbody
+            - @user.system_games.each do |s|
+            
+                tr 
+                  td = s.game.title.titlecase
+                  td = s.system.name
+                  -if current_user == @user
+                    td 
+                        = button_to "Remove", user_game_path(s.id), method: :delete, class: 'btn btn-danger'

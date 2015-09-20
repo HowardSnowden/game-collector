@@ -1,0 +1,16 @@
+h1 = 'Users'
+-if @users
+   - @users.each do |u|
+        table.table
+            thead
+                tr
+                  th = 'Name'
+                  th = 'Email'
+                  th = 'Number of Games'
+            tbody
+                 td = link_to "#{u.name}", user_path(u.id)
+                 td = u.email
+                 td = number_of_games(u)
+        
+
+    

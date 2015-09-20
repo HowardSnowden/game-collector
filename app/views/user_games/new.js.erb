@@ -1,0 +1,23 @@
+
+var view  = "<%= escape_javascript(render('shared/new_game'))  %>";
+$('.new-game').html(view);
+$('.add').hide();
+$(document).on('click',  "#new_user_game input[type=submit]", function(e){
+    
+   if (!isValid()){
+    e.preventDefault();
+    $('#new_user_game').prepend("<p class='error'>Title can't be blank</p>");
+      $('.error').css('color', 'red');
+   }
+});
+
+function isValid(){
+    if (!$.trim($('#title').val()).length){
+        
+    return false;
+    }
+    
+    else {
+        return true;
+    }
+}

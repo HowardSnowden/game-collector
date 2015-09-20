@@ -1,0 +1,16 @@
+h1 = 'Video Games, yo'
+table.table
+  thead
+    tr
+      th = 'Game Title'
+      th = 'Consoles'
+      th = 'Users'
+  tbody
+    - @games.each do |g|
+        tr 
+          td = g.title.titlecase
+          td 
+            = show_consoles(g)
+          td
+            = link_to "Users who own this game", users_path(:title => g.title)
+
